@@ -32,17 +32,63 @@ By using three variable K-Map, we can get the simplified expression for next sta
  
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=S+R′Q(t)Q(t+1)=S+R′Q(t)
 
-**Procedure**
-
-/* write all the steps invloved */
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+ Developed by: RegisterNumber: 24900030
+
+ module Verilog1 (s, r, clk, rst, q);
+ 
+ input s, r, clk, rst;
+ 
+ output reg q;
+ 
+ always @(posedge clk or posedge rst)
+ 
+ begin
+ 
+ if (rst)
+ 
+ q <= 0; // Reset the flip-flop
+ 
+ else
+ 
+ begin
+ 
+ case ({s, r}) // S and R control the behavior
+ 
+ 2'b00: q <= q;    
+ 
+// No change
+
+ 2'b01: q <= 0;   
+ 
+2'b10: q <= 1;  
+
+2'b11: q <= 0;   
+
+endcase
+
+ end
+ 
+ end
+ 
+ endmodule
+ 
+ // Reset
+ 
+ // Set
+ 
+ // Invalid state, typically treated as rese
 
 **RTL LOGIC FOR FLIPFLOPS**
+![WhatsApp Image 2024-12-09 at 21 12 44_800e99c4](https://github.com/user-attachments/assets/39947edc-d521-4aa5-9662-290b6fd47ead)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![WhatsApp Image 2024-12-09 at 21 13 10_aa16ea7c](https://github.com/user-attachments/assets/842343f5-f15b-47c2-88b3-4c822977bb29)
+
 
 **RESULTS**
+
+ Thus,the SR flipflop using verilog and validating their functionality using their functional tables is implemented successfully.
